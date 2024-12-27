@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card with Bulma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        html, body {
+            height: 100%; /* Set height to 100% for full-screen background */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        body {
+            background-color: rgb(111, 160, 229); /* Initial full-screen background color */
+            display: flex; /* Use flexbox to center content */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+        .title {
+            color: rgb(12, 54, 90);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            border-radius: 10px;
+        }
+        .card {
+            background-color: rgb(97, 87, 155);
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .subtitle {
+            color: antiquewhite;
+        }
+        .content {
+            color: white;
+        }
+        .button {
+            background-color: rgb(12, 54, 90);
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: rgb(10, 45, 70);
+        }
+        .modal {
+            display: none; /* Hidden by default */
+        }
+        .modal.is-active {
+            display: flex; /* Show modal when active */
+        }
+        .modal-background {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">Responsive Card with Bulma</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://jooinn.com/images/sliced-apple-5.jpg" alt="Apple">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">Apple</p>
+                                <p class="subtitle is-6">Rich in fiber and vitamin C</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            Apples are nutritious and may help reduce the risk of chronic diseases.
+                            <br>
+                            <button class="button is-small" onclick="showModal('Apple', 'Apples are rich in fiber and vitamin C. They may help reduce the risk of chronic diseases and improve heart health.')" id="appleButton">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://jooinn.com/images/pears-isolated-on-white-background-8.jpg" alt="Pears">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">Pears</p>
+                                <p class="subtitle is-6">High in fiber and vitamin K</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            Pears are a good source of dietary fiber and can aid digestion.
+                            <br>
+                            <button class="button is-small" onclick="showModal('Pears', 'Pears are high in fiber and vitamin K. They can aid digestion and promote heart health.')" id="pearsButton">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://images6.alphacoders.com/806/thumb-1920-806083.jpg" alt="Kiwi">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">Kiwi</p>
+                                <p class="subtitle is-6">Rich in vitamin C and antioxidants</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            Kiwis are known for their high vitamin C content and may boost the immune system.
+                            <br>
+                            <button class="button is-small" onclick="showModal('Kiwi', 'Kiwis are rich in vitamin C and antioxidants. They may help boost the immune system and improve digestion.')" id="kiwiButton">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="fruitModal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h1 class="title" id="modalTitle"></h1>
+                <p id="modalDescription"></p>
+                <button class="button" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('fruitModal').classList.add('is-active');
+            document.getElementById(event.target.id).style.backgroundColor = 'rgb(10, 45, 70)'; // Change button color on click
+        }
+
+        function closeModal() {
+            document.getElementById('fruitModal').classList.remove('is-active');
+        }
+    </script>
+
+</body>
+</html>
